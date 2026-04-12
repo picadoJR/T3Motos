@@ -75,7 +75,7 @@ MOTOS123/
 Clona el repositorio:
 
 ```bash
-git clone https://github.com/picadoJR/T3.git
+git clone https://github.com/picadoJR/T3Motos.git
 ```
 
 Ingresa al proyecto:
