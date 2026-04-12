@@ -1,16 +1,146 @@
-# React + Vite
+🏍️ MOTOS123
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con React para la visualización de motocicletas, gestión de usuarios y navegación entre diferentes secciones como artículos, ofertas y compras.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+ 🚀 Tecnologías utilizadas
 
-## React Compiler
+* React
+* Vite
+* React Router DOM
+* JavaScript (ES6+)
+* CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+ 📁 Estructura del proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+MOTOS123/
+│── public/
+│   └── img/              # Imágenes de motos
+│
+│── src/
+│   ├── assets/           # Recursos estáticos
+│   ├── features/
+│   │   ├── auth/
+│   │   │   ├── components/
+│   │   │   │   ├── Favorites.jsx
+│   │   │   │   ├── Myaccount.jsx
+│   │   │   │   └── Mybuys.jsx
+│   │   │   ├── hooks/
+│   │   │   └── context/
+│   │   │       └── ShopContext.jsx
+│   │
+│   ├── layout/
+│   │   ├── components/
+│   │   │   ├── Header.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   └── Content.jsx
+│   │   └── hooks/
+│   │       ├── ClockExample.jsx
+│   │       ├── ColorExample.jsx
+│   │       ├── CounterExample.jsx
+│   │       ├── FetchExample.jsx
+│   │       ├── InputExample.jsx
+│   │       ├── ToggleExample.jsx
+│   │       ├── useFormValidation.jsx
+│   │       ├── UseOnlineStatus.jsx
+│   │       ├── UserPersistExample.jsx
+│   │       └── WindowWidthExample.jsx
+│
+│   ├── views/
+│   │   ├── Articles.jsx
+│   │   ├── Hooks.jsx
+│   │   └── Offers.jsx
+│
+│   ├── shared/           # Recursos compartidos
+│   ├── styles/
+│   │   ├── app.css
+│   │   └── index.css
+│
+│   ├── App.jsx
+│   └── main.jsx
+│
+│── index.html
+│── vite.config.js
+│── package.json
+```
+
+---
+
+⚙️ Instalación
+
+Clona el repositorio:
+
+```bash
+git clone https://github.com/picadoJR/T3.git
+```
+
+Ingresa al proyecto:
+
+```bash
+cd MOTOS123
+```
+
+Instala dependencias:
+
+```bash
+npm install
+```
+
+---
+
+▶️ Ejecución en desarrollo
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en:
+
+```
+http://localhost:5173
+```
+
+---
+
+ 🏗️ Build para producción
+
+```bash
+npm run build
+```
+
+---
+
+🌐 Despliegue
+
+El proyecto puede ser desplegado fácilmente en plataformas como:
+
+* Vercel
+  
+
+---
+
+ 📌 Funcionalidades principales
+
+* Visualización de catálogo de motos
+* Navegación entre páginas (Articles, Hooks, Offers)
+* Gestión de usuario (cuenta, favoritos, compras)
+* Uso de hooks personalizados
+* Context API para manejo de estado global
+
+---
+
+👨‍💻 Autor
+
+Desarrollado por **Reinaldo Picado**
+link de vercel
+https://t3-motos.vercel.app/
+
+---
+
+ 📄 Licencia
+
+Este proyecto es de uso educativo.
