@@ -61,9 +61,18 @@ export const Content = () => {
             Explorar ahora
           </a>
 
+          {/* BOTÓN GITHUB */}
+          <a
+            href="https://github.com/picadoJR/T3Motos.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-dark btn-lg ms-3"
+          >
+            Ver en GitHub 🚀
+          </a>
+
         </div>
       </section>
-
 
       {/* PRODUCTOS */}
       <section id="articulos" className="py-5">
@@ -78,7 +87,7 @@ export const Content = () => {
 
             {productos.map((producto) => {
 
-              const esFavorito = favoritos.some(f => f.id === producto.id);
+              const esFavorito = favoritos?.some(f => f.id === producto.id);
 
               const descuentoPorcentaje =
                 Math.round(((producto.precio - producto.descuento) / producto.precio) * 100);
