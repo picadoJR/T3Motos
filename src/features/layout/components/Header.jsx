@@ -25,16 +25,16 @@ import HomeIcon from "@mui/icons-material/Home";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 
-export const  Header = () => {
+export const Header = () => {
   const { agregarFavorito, agregarCarrito } = useContext(ShopContext);
-    const { carrito, favoritos } = useContext(ShopContext);
+  const { carrito, favoritos } = useContext(ShopContext);
+  
   return (
     <AppBar position="fixed">
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
 
         {/* Logo */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          
           <Typography variant="h6">
             SuperBikers
           </Typography>
@@ -101,16 +101,25 @@ export const  Header = () => {
           </NavLink>
 
           <NavLink
-              to="/hooks"
-              className={({ isActive }) =>
-                isActive
-                  ? "btn btn-primary me-2"
-                  : "btn btn-outline-light me-2"
-              }
-            >
-              Hooks
+            to="/hooks"
+            style={{ textDecoration: "none" }}
+          >
+            {({ isActive }) => (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  color: "white",
+                  backgroundColor: isActive ? "rgba(255,255,255,0.2)" : "transparent",
+                  padding: "6px 10px",
+                  borderRadius: "6px"
+                }}
+              >
+                Hooks
+              </Box>
+            )}
           </NavLink>
-
 
           <NavLink to="/favorites" style={{ textDecoration: "none" }}>
             {({ isActive }) => (
@@ -148,6 +157,8 @@ export const  Header = () => {
         >
           <SearchIcon />
           <InputBase
+            id="search-input"
+            name="search"
             placeholder="Buscar..."
             sx={{ ml: 1, color: "white", width: "100%" }}
           />

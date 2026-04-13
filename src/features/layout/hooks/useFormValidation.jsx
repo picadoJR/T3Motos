@@ -6,8 +6,14 @@ export const useFormValidation = (initialValues, validate) => {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
+    // Compatibilidad con inputs nativos y TextField de MUI
+    const name = e.target.name || e.target.id;
+    const value = e.target.value;
 
-    const { name, value } = e.target;
+    if (!name) {
+      console.warn("Input sin atributo name o id:", e.target);
+      return;
+    }
 
     const newValues = {
       ...values,
@@ -16,24 +22,27 @@ export const useFormValidation = (initialValues, validate) => {
 
     setValues(newValues);
 
-    const validationErrors = validate(newValues);
-    setErrors(validationErrors);
-
+    if (validate) {
+      const validationErrors = validate(newValues);
+      setErrors(validationErrors);
+    }
   };
 
   const handleSubmit = (e, callback) => {
-
     e.preventDefault();
 
-    const validationErrors = validate(values);
+    if (validate) {
+      const validationErrors = validate(values);
+      setErrors(validationErrors);
 
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
+      if (Object.keys(validationErrors).length === 0 && callback) {
+        callback();
+      }
+    } else if (callback) {
       callback();
     }
-
   };
+
 
   return {
     values,

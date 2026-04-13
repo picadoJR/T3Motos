@@ -10,6 +10,8 @@ export default function InputExample() {
       <Typography variant="h6">Input Example</Typography>
 
       <TextField
+        id="input-example-text"
+        name="inputExampleText"
         label="Escribe algo"
         variant="outlined"
         fullWidth

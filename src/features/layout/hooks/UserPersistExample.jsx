@@ -18,9 +18,12 @@ const UserPersistExample = () => {
       </Typography>
 
       <TextField
+        id="user-persist-name"
+        name="userName"
         label="Escribe tu nombre"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        fullWidth
       />
 
       <Typography sx={{ mt: 2 }}>
