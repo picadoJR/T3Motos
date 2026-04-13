@@ -1,21 +1,52 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
-// ✅ CREAR EL CONTEXTO (IMPORTANTE, ESTO ERA LO QUE FALTABA)
+// ✅ CREAR EL CONTEXTO
 export const ShopContext = createContext();
 
 export const ShopProvider = ({ children }) => {
 
-  const [favoritos, setFavoritos] = useState([]);
-  const [carrito, setCarrito] = useState([]);
+  // ✅ INICIALIZAR DESDE localStorage (PERSISTENCIA)
+  const [favoritos, setFavoritos] = useState(() => {
+    const saved = localStorage.getItem("favoritos");
+    return saved ? JSON.parse(saved) : [];
+  });
 
-  // ✅ AGREGAR A FAVORITOS
+  const [carrito, setCarrito] = useState(() => {
+    const saved = localStorage.getItem("carrito");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // ✅ GUARDAR EN localStorage CUANDO CAMBIEN
+  useEffect(() => {
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }, [favoritos]);
+
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }, [carrito]);
+
+  // ✅ AGREGAR A FAVORITOS (evita duplicados)
   const agregarFavorito = (producto) => {
-    setFavoritos((prev) => [...prev, producto]);
+    setFavoritos((prev) => {
+      const existe = prev.some(p => p.id === producto.id);
+      if (existe) return prev; // Ya existe, no agregar
+      return [...prev, producto];
+    });
   };
 
-  // ✅ AGREGAR AL CARRITO
+  // ✅ AGREGAR AL CARRITO (acumula cantidades)
   const agregarCarrito = (producto) => {
-    setCarrito((prev) => [...prev, producto]);
+    setCarrito((prev) => {
+      const existe = prev.find(p => p.id === producto.id);
+      if (existe) {
+        return prev.map(p =>
+          p.id === producto.id
+            ? { ...p, cantidad: (p.cantidad || 1) + 1 }
+            : p
+        );
+      }
+      return [...prev, { ...producto, cantidad: 1 }];
+    });
   };
 
   // ✅ ELIMINAR FAVORITO
@@ -28,9 +59,28 @@ export const ShopProvider = ({ children }) => {
     setCarrito((prev) => prev.filter(p => p.id !== id));
   };
 
-  // ✅ TOTAL DEL CARRITO
+  // ✅ ACTUALIZAR CANTIDAD (nueva función)
+  const actualizarCantidad = (id, nuevaCantidad) => {
+    if (nuevaCantidad <= 0) {
+      quitarCarrito(id);
+      return;
+    }
+    setCarrito((prev) =>
+      prev.map(p =>
+        p.id === id ? { ...p, cantidad: nuevaCantidad } : p
+      )
+    );
+  };
+
+  // ✅ TOTAL DEL CARRITO (con cantidades)
   const totalCarrito = carrito.reduce(
-    (total, producto) => total + producto.precio,
+    (total, producto) => total + (producto.descuento || producto.precio) * (producto.cantidad || 1),
+    0
+  );
+
+  // ✅ CANTIDAD TOTAL DE PRODUCTOS EN CARRITO
+  const cantidadCarrito = carrito.reduce(
+    (total, producto) => total + (producto.cantidad || 1),
     0
   );
 
@@ -43,7 +93,9 @@ export const ShopProvider = ({ children }) => {
         agregarCarrito,
         quitarFavorito,
         quitarCarrito,
-        totalCarrito
+        actualizarCantidad,
+        totalCarrito,
+        cantidadCarrito
       }}
     >
       {children}
