@@ -9,7 +9,7 @@ export const Favorites = () => {
   return (
     <section className="py-5">
       <div className="container">
-        <h2 className="text-center mb-5">❤️ TUS PRODUCTOS FAVORITOS</h2>
+        <h2 className="text-center mb-5 protect-name" data-notranslate>❤️ TUS PRODUCTOS FAVORITOS</h2>
 
         {favoritos.length === 0 ? (
           <div className="text-center">

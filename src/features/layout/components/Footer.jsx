@@ -11,7 +11,7 @@ export const Footer = () => {
           {/* Marca */}
           <div className="col-md-4 mb-3">
             <h5 className="fw-bold">SuperBikes</h5>
-            <p style={{ fontSize: "14px" }}>
+            <p style={{fontSize: "14px" }}>
               Pasión por las motos y la velocidad. Encuentra las mejores opciones del mercado.
             </p>
           </div>
