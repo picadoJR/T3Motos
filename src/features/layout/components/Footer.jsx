@@ -1,5 +1,6 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -19,9 +20,15 @@ export const Footer = () => {
           <div className="col-md-4 mb-3">
             <h6 className="fw-bold">Enlaces</h6>
             <ul className="list-unstyled">
-              <li><a href="/" className="text-white text-decoration-none">Inicio</a></li>
-              <li><a href="/productos" className="text-white text-decoration-none">Motos</a></li>
-              <li><a href="/contacto" className="text-white text-decoration-none">Contacto</a></li>
+              <li>
+                <Link to="/" className="text-white text-decoration-none">Inicio</Link>
+              </li>
+              <li>
+                <Link to="/mybuys" className="text-white text-decoration-none">Carrito</Link>
+              </li>
+              <li>
+                <Link to="/offers" className="text-white text-decoration-none">Ofertas</Link>
+              </li>
             </ul>
           </div>
 
@@ -65,7 +72,7 @@ export const Footer = () => {
         <hr className="border-light" />
         <div className="text-center">
           <small>
-            © 2026 | SuperBikes | Reinaldo Picado | 3006264600
+            © 2026 | SuperBikes | Reinaldo Picado | 3017487208
           </small>
         </div>
       </div>

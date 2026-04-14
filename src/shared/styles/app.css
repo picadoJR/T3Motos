@@ -1,3 +1,7 @@
+/* ============================================
+   ESTILOS ORIGINALES (los mantengo)
+   ============================================ */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +43,62 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* ============================================
+   NUEVOS ESTILOS PARA HEADER RESPONSIVE
+   ============================================ */
+
+/* Asegura que el contenido no quede oculto detrás del header fijo */
+body {
+  margin: 0;
+  padding-top: 64px; /* Espacio para el header en desktop */
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-top: 56px; /* Espacio para el header en móvil */
+  }
+  
+  /* Ajuste para el root en móvil */
+  #root {
+    padding: 0.5rem;
+  }
+}
+
+/* Asegura que el drawer (menú lateral) esté por encima de todo */
+.MuiDrawer-root {
+  z-index: 1300 !important;
+}
+
+/* Links sin subrayado */
+a {
+  text-decoration: none;
+}
+
+/* Evita overflow horizontal en móvil */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Mejora el scroll en móvil */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ajustes para cards en móvil */
+@media (max-width: 600px) {
+  .card {
+    padding: 1em;
+  }
+  
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
 }
